@@ -1,22 +1,22 @@
-<!-- 
-  script setup语法
-  要使用这个语法，需要将 setup attribute 添加到 <script> 代码块上
-  顶层的绑定会自动暴露给模板，所以定义的变量，函数和import导入的内容都可以直接在模板中直接使用
--->
 <script setup>
-import { ref } from 'vue'
-  let money = ref(10000)
-  const a = 1
-  const b = 2
-  const addMoney = () => {
-    money.value += 100
-  }
-</script>
+// vue3中 钩子函数是有一些改变的
 
+import { onMounted } from 'vue';
+
+/* 
+  1. beforeCreate 和 created两个钩子函数 ----> setup函数
+  2. beforeMount mounted beforeUpdate updated 这四个钩子函数  ----> 加前缀 on
+  3. beforeDestroy ----> onBeforeUnmount
+  4. destroyed ----> onUnmounted
+*/
+  console.log(document.querySelector('h1'))
+onMounted(() => {
+  console.log(document.querySelector('h1'))
+  
+})
+
+</script>
 <template>
-  <div>{{money}} <button @click="addMoney">挣大钱</button></div>
-  <hr>
-  <div>{{a}}</div>
-  <hr>
-  <div>{{b}}</div>
+  <h1>标题</h1>
 </template>
+<style></style>
