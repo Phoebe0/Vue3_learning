@@ -3,6 +3,11 @@
     <div>{{ num }}</div>
     <button @click="changeNum">改值</button>
   </div>
+  <hr>
+  <div id="app">
+    <div>{{ person.name }} --- {{person.age}}</div>
+    <button @click="changeAge">改年龄</button>
+  </div>
 </template>
 
 <script>
@@ -22,14 +27,24 @@ export default {
  setup() {
   // 简单数据类型
   let num = ref(1000)
-  console.log(num)
+  console.log(num) // 此时num已经被处理成了对象
   console.log(num.value) // 访问值 .value
   const changeNum = () => {
     num.value ++
   }
+
+  const person = ref({ // {value: {name: 'Tt', age: 22}}
+    name: 'Tt',
+    age:22
+  })
+  const changeAge = () => {
+    person.value.age ++
+  }
   return {
     num,
-    changeNum
+    changeNum,
+    person,
+    changeAge
   }
  }
 
