@@ -10,9 +10,9 @@ const { todos } = useStore()
     <ul class="todo-list">
       <li v-for="item in todos.list" :key="item.id" :class="{completed: item.done}">
         <div class="view">
-          <input class="toggle" type="checkbox" :checked="item.done" />
+          <input class="toggle" type="checkbox" :checked="item.done" @change="todos.changeState(item.id)"/>
           <label>{{item.name}}</label>
-          <button class="destroy"></button>
+          <button class="destroy" @click="todos.delTodos(item.id)"></button>
         </div>
         <input class="edit" value="Create a TodoMVC template" />
       </li>

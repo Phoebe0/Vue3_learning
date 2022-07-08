@@ -23,6 +23,16 @@ export default defineStore('todos',{
       ],
     }
   },
-  actions: {},
+  actions: {
+    // 删除
+    delTodos (id) {
+      this.list = this.list.filter(item => item.id !== id)
+    },
+    // 修改单个todos的状态
+    changeState (id) {
+      const o = this.list.find(item => item.id === id)
+      o.done = !o.done
+    }
+  },
   getters: {}
 })
