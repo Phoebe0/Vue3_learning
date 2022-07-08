@@ -26,4 +26,3 @@ export default defineStore('todos',{
   actions: {},
   getters: {}
 })
-// 3. 
