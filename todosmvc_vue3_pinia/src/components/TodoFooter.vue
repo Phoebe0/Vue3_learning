@@ -1,20 +1,17 @@
-<script setup></script>
+<script setup>
+import useStore from '../store'
+const { todos, toggles } = useStore()
+</script>
 
 <template>
-  <footer class="footer">
-    <span class="todo-count"><strong>0</strong> item left</span>
+  <footer class="footer" v-if="todos.isShowFooter">
+    <span class="todo-count"><strong>{{todos.count}}</strong> 个剩余任务</span>
     <ul class="filters">
-      <li>
-        <a class="selected" href="#/">All</a>
-      </li>
-      <li>
-        <a href="#/active">Active</a>
-      </li>
-      <li>
-        <a href="#/completed">Completed</a>
+      <li v-for="(item,index) in toggles.btns" :key="index" @click="toggles.changeActive(item)">
+        <a :class="{selected: item === toggles.activeBtn}" href="#/">{{item}}</a>
       </li>
     </ul>
-    <button class="clear-completed">Clear completed</button>
+    <button class="clear-completed" v-if="todos.isShowButton" @click="todos.clear">清空已完成的任务</button>
   </footer>
 </template>
 
